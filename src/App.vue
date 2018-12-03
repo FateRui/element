@@ -6,11 +6,7 @@
 
 <script>
 export default {
-  created () {
-    this.$axios.get('/api/goods').then((data) => {
-      console.log(data)
-    })
-  }
+
 }
 </script>
 
