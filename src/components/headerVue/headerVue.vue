@@ -13,31 +13,38 @@
           <div class="supports" v-if="seller.supports">
             <span><bullentinIcon size=12 :type='seller.supports[0].type' ></bullentinIcon></span><span class="text" v-text="seller.supports[0].description"></span>
           </div>
-          <div class="bullentin-count" v-if="seller.supports">
+          <div class="bullentin-count" v-if="seller.supports" @click="handClick">
             <span class="count" v-text="`${seller.supports.length}个`"></span><span class="icon-keyboard_arrow_right"></span>
           </div>
         </div>
       </div>
-      <div class="bulletin-warpper">
+      <div class="bulletin-warpper"  @click="handClick">
         <span class="icon"></span>
         <p v-text="seller.bulletin"></p>
         <span class="icon-keyboard_arrow_right"></span>
-      </div>
+      </div >
       <div class="bg-img">
         <img :src="seller.avatar">
       </div>
+      <seller-produce ref="detail" :seller="seller"></seller-produce>
     </div>
 </template>
 
 <script>
 import bullentinIcon from '../bullentinIcon/bullentinIcon'
+import sellerProduce from '../sellerProduce/sellerProduce'
 export default {
   props: {
     seller: {
       type: Object
     }
   },
-  components: { bullentinIcon }
+  components: { bullentinIcon, sellerProduce },
+  methods: {
+    handClick () {
+      this.$refs.detail.toggleMe()
+    }
+  }
 }
 </script>
 
