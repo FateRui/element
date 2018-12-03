@@ -1,0 +1,10 @@
+.size(@w,@h){
+  width: @w;
+  height: @h;
+}
+.bg_img(@img){
+  background-image: url('@{img}_2@2x.png');
+  @media (-webkit-max-device-pixel-ratio: 3),(max-device-pixel-ratio: 3){
+    background-image: url('@{img}_2@3x.png');
+  }
+}
