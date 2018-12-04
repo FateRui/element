@@ -42,6 +42,8 @@ export default {
 <style scoped lang="less">
   .star{
     font-size: 0;
+    display: inline-block;
+    line-height: 0 !important;
     &.size24{
       .star-item{
         margin-right: 3px;

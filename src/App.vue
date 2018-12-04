@@ -6,7 +6,9 @@
       <router-link :to="{name:'ratings'}">评价</router-link>
       <router-link :to="{name:'seller'}">商家</router-link>
     </div>
-    <router-view :seller="seller"></router-view>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
   </div>
 </template>
 

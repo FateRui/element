@@ -76,6 +76,9 @@ export default {
   mounted () {
     this._init_scroll()
   },
+  updated () {
+    this._init_scroll()
+  },
   watch: {
     seller () {
       this._init_scroll()
