@@ -9,7 +9,7 @@
             <div class="bulletin-list">
               <ul>
                 <li v-for="(item,index) in seller.supports" :key="index" class="bulletin-item">
-                  <bullentin-icon :type="item.type" size="16"></bullentin-icon><span class="text" v-text="item.description"></span>
+                  <bullentin-icon :type="item.type" size="16"></bullentin-icon><span v-text="item.description"></span>
                 </li>
               </ul>
             </div>
