@@ -38,7 +38,7 @@ export default {
     .title{
       font-size: 14px;
       line-height: 14px;
-      color: rgba(255,255,255);
+      color: rgb(255,255,255);
       font-weight: 700;
     }
     .line{

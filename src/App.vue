@@ -35,6 +35,7 @@ export default {
     .tabs {
       height: 40px;
       display: flex;
+      .border-bottom-1px(rgba(7,17,27,.1));
       a {
         flex: 1;
         text-align: center;
@@ -46,6 +47,19 @@ export default {
           color: rgb(240,20,20);
         }
       }
+    }
+  }
+  .border-bottom-1px(@color){
+    position: relative;
+    &:after{
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      bottom: 0;
+      background-color: @color;
     }
   }
 </style>

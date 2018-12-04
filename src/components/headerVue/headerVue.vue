@@ -176,7 +176,7 @@ export default {
   }
   .bg_img(@img){
     background-image: url('@{img}@2x.png');
-    @media (-webkit-max-device-pixel-ratio: 3),(max-device-pixel-ratio: 3){
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3){
       background-image: url('@{img}@3x.png');
     }
   }

@@ -9,7 +9,8 @@ Vue.use(Router)
 let routes = [
   {name: 'goods', path: '/goods', component: goods},
   {name: 'ratings', path: '/ratings', component: ratings},
-  {name: 'seller', path: '/seller', component: seller}
+  {name: 'seller', path: '/seller', component: seller},
+  {path: '*', redirect: {name: 'goods'}}
 ]
 
 export default new Router({
