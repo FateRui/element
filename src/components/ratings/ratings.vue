@@ -21,14 +21,8 @@
         </div>
         <split></split>
         <rating-control :selectObject="selectObject" :ratings="ratings"></rating-control>
-        <div class="ratings-content">
-          <ul>
-            <li >
-              <div class="ratings-item">
-
-              </div>
-            </li>
-          </ul>
+        <div class="sellerRatings-warpper" v-if="ratings.length>0">
+          <seller-ratings :ratings="ratings" :selectObject="selectObject"></seller-ratings>
         </div>
       </div>
     </div>
@@ -38,19 +32,20 @@
 import star from '../star/star'
 import split from '../split/split'
 import ratingControl from '../ratingControl/ratingControl'
+import sellerRatings from '../sellerRatings/sellerRatings'
 export default {
   props: {
     seller: {
       type: Object
     }
   },
-  components: {star, split, ratingControl},
+  components: {star, split, ratingControl, sellerRatings},
   data () {
     return {
       selectObject: {
         showContent: false,
         items: ['全部', '满意', '不满意'],
-        selectIndex: 1
+        selectIndex: 0
       },
       ratings: []
     }
