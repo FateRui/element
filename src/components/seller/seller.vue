@@ -79,10 +79,8 @@ export default {
   updated () {
     this._init_scroll()
   },
-  watch: {
-    seller () {
-      this._init_scroll()
-    }
+  activated () {
+    this._init_scroll()
   },
   methods: {
     _init_scroll () {
@@ -116,7 +114,7 @@ export default {
   .seller{
     position: absolute;
     top: 174px;
-    bottom: 48px;
+    bottom: 0;
     width: 100%;
     overflow: hidden;
     .seller-warpper{

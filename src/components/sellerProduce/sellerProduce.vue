@@ -1,6 +1,7 @@
 <template>
   <transition name="fade">
-    <div class="sellerProduce" v-if="show">
+    <div class="sellerProduce" v-if="show" id="sellerProduce">
+      <div class="sellerProduce-warpper">
         <div class="product-warpper">
           <div class="content">
             <h1 class="name" v-text="seller.name"></h1>
@@ -18,6 +19,7 @@
           </div>
         </div>
         <div class="icon-close close" @click="toggleMe"></div>
+      </div>
     </div>
   </transition>
 </template>
@@ -26,6 +28,7 @@
 import star from '../../components/star/star'
 import lineTitle from '../../components/lineTitle/lineTitle'
 import bullentinIcon from '../../components/bullentinIcon/bullentinIcon'
+import BtScroll from 'better-scroll'
 export default {
   data () {
     return {
@@ -35,6 +38,12 @@ export default {
   methods: {
     toggleMe () {
       this.show = !this.show
+    },
+    _init_scroll () {
+      this.bt_scroll = new BtScroll('#sellerProduce', {
+        click: true,
+        scrollY: true
+      })
     }
   },
   props: {
@@ -42,7 +51,10 @@ export default {
       type: Object
     }
   },
-  components: {star, lineTitle, bullentinIcon}
+  components: {star, lineTitle, bullentinIcon},
+  updated () {
+    this._init_scroll()
+  }
 }
 </script>
 
@@ -50,12 +62,12 @@ export default {
   @import "../../common/less/iconfont";
   .sellerProduce{
     position: fixed;
-    overflow: auto;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 100;
+    overflow: hidden;
     background:rgba(7,17,27,.8);
     backdrop-filter: blur(10px);
     &.fade-enter,&fade-leave-to{

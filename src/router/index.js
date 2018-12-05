@@ -12,7 +12,8 @@ let routes = [
   {name: 'seller', path: '/seller', component: seller},
   {path: '*', redirect: {name: 'goods'}}
 ]
-
-export default new Router({
+let router = new Router({
   routes
 })
+
+export default router

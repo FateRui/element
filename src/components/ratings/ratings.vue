@@ -1,5 +1,5 @@
 <template>
-    <div class="ratings">
+    <div class="ratings" id="ratings">
       <div class="ratings-warpper">
         <div class="mark">
           <div class="left">
@@ -33,6 +33,7 @@ import star from '../star/star'
 import split from '../split/split'
 import ratingControl from '../ratingControl/ratingControl'
 import sellerRatings from '../sellerRatings/sellerRatings'
+import BtScroll from 'better-scroll'
 export default {
   props: {
     seller: {
@@ -54,12 +55,35 @@ export default {
     this.$axios.get('/api/ratings').then((data) => {
       this.ratings = data.data.data
     })
+  },
+  methods: {
+    _initScroll () {
+      if (!this.bt_scroll) {
+        this.bt_scroll = new BtScroll('#ratings', {
+          click: true,
+          scrollY: true
+        })
+      } else {
+        this.bt_scroll.refresh()
+      }
+    }
+  },
+  activated () {
+    this._initScroll()
+  },
+  updated () {
+    this._initScroll()
   }
 }
 </script>
 
 <style scoped lang="less">
 .ratings{
+  position: absolute;
+  top: 174px;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
   .ratings-warpper{
     .mark{
       display: flex;
