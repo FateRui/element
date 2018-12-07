@@ -34,6 +34,14 @@ export default {
 
 <style scoped lang="less">
   #app {
+    max-width: 640px;
+    min-width: 320px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 100%;
+    position: fixed;
+    height: 100%;
     .tabs {
       height: 40px;
       display: flex;
