@@ -1,5 +1,5 @@
 <template>
-    <div class="ratings" id="ratings">
+    <div class="ratings" id="ratings" ref="ratings">
       <div class="ratings-warpper">
         <div class="mark">
           <div class="left">
@@ -51,9 +51,11 @@ export default {
       ratings: []
     }
   },
-  created () {
+  mounted () {
+    this.$showLoading(this.$refs.ratings)
     this.$axios.get('/api/ratings').then((data) => {
       this.ratings = data.data.data
+      this.$hideLoading(this.$refs.ratings)
     })
   },
   methods: {

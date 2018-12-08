@@ -1,5 +1,5 @@
 <template>
-    <div class="goods">
+    <div class="goods" ref="goods">
       <div class="goods-warpper">
         <div class="menu" id="menu">
           <ul class="menu-warpper">
@@ -58,12 +58,14 @@ export default {
       goods: []
     }
   },
-  created () {
+  mounted () {
+    this.$showLoading(this.$refs.goods)
     this.$axios.get('/api/goods').then((data) => {
       if (data.data.error === 0) {
         this.$store.commit('setGoods', data.data.data)
         this.$nextTick(() => {
           this._init_scroll()
+          this.$hideLoading(this.$refs.goods)
         })
       }
     })

@@ -1,5 +1,5 @@
 <template>
-    <div class="seller">
+    <div class="seller" ref="seller">
       <div class="seller-warpper">
         <div class="seller-message">
           <div class="title-message">
