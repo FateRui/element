@@ -1,6 +1,6 @@
 <template>
   <div class="shopCart" :class="showClass">
-    <div class="cart-warpper">
+    <div class="cart-warpper" @click="shopCartClick">
       <div class="icon-shopping_cart">
       </div>
       <div class="count" v-if="count>0">{{count}}</div>
@@ -77,6 +77,11 @@ export default {
         return ['hasCount']
       }
     }
+  },
+  methods: {
+    shopCartClick () {
+      this.$emit('toggle')
+    }
   }
 }
 </script>
@@ -86,6 +91,7 @@ export default {
   .shopCart{
     height: 48px;
     width: 100%;
+    z-index: 200;
     background-color: #141d27;
     position: relative;
     &.hasCount, &.account{

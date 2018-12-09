@@ -40,9 +40,16 @@
           </ul>
         </div>
       </div>
-      <div class="shopCart-warpper">
-        <shop-cart :seller="seller"></shop-cart>
+      <div class="shopCart-warpper" >
+        <shop-cart :seller="seller" @toggle="showFoodList = !showFoodList"></shop-cart>
       </div>
+      <transition name="collapse">
+        <div class="shop-list" v-if="showFoodList">
+          <div class="shop-cart">
+
+          </div>
+        </div>
+      </transition>
     </div>
 </template>
 <script>
@@ -55,7 +62,8 @@ export default {
   data () {
     return {
       selectIndex: 0,
-      goods: []
+      goods: [],
+      showFoodList: false
     }
   },
   mounted () {
@@ -233,38 +241,53 @@ export default {
     height: 48px;
     width: 100%;
   }
-  .border-bottom-1px(@color){
-    position: relative;
-    &:after{
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      left: 0;
-      bottom: 0;
-      background-color: @color;
-      transform: scaleY(0.33);
-    }
+  .shop-list{
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    bottom: 48px;
+    left: 0;
+    z-index: 20;
+    background: red;
   }
-  .border-top-1px(@color){
-    position: relative;
-    &:after{
-      content: '';
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      left: 0;
-      top: 0;
-      background-color: @color;
-      transform: scaleY(0.33);
-    }
+}
+.collapse-enter,.collapse-leave-to{
+  transform: translateY(100%);
+}
+.collapse-enter-active,.collapse-leave-active{
+  transition:all .4s;
+}
+.border-bottom-1px(@color){
+  position: relative;
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: @color;
+    transform: scaleY(0.33);
   }
-  .border-none{
-    &:after{
-      display: none;
-    }
+}
+.border-top-1px(@color){
+  position: relative;
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    top: 0;
+    background-color: @color;
+    transform: scaleY(0.33);
+  }
+}
+.border-none{
+  &:after{
+    display: none;
   }
 }
 </style>
